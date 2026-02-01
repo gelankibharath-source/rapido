@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rapidio Ride</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #f2f2f2;
+    }
+
+    .app {
+        max-width: 420px;
+        margin: auto;
+        background: #fff;
+        min-height: 100vh;
+        box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+
+    .header {
+        background: #ff5722;
+        color: white;
+        padding: 12px;
+        text-align: center;
+        position: relative;
+    }
+
+    .logo {
+        font-size: 22px;
+        font-weight: bold;
+    }
+
+    .lang-btn {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        background: white;
+        color: #ff5722;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px;
+    }
+
+    .content {
+        padding: 15px;
+        font-size: 17px;
+    }
+
+    .content p {
+        margin: 10px 0;
+    }
+
+    iframe {
+        width: 100%;
+        height: 260px;
+        border: none;
+        border-radius: 10px;
+        margin-top: 10px;
+    }
+
+    .buttons {
+        padding: 15px;
+    }
+
+    .buttons button {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 10px;
+        font-size: 18px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+    }
+
+    .book {
+        background: #ff5722;
+        color: white;
+    }
+
+    .call {
+        background: #4CAF50;
+        color: white;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+    <div class="header">
+        <div class="logo">🛵 Rapido</div>
+        <button class="lang-btn" onclick="toggleLang()">తెలుగు</button>
+    </div>
+
+    <div class="content">
+        <p id="start">📍 <b>Start:</b> Bathili</p>
+        <p id="stop">➡️ <b>Stop:</b> Kotturu</p>
+        <p id="end">🏁 <b>Destination:</b> Hiramandalam</p>
+
+        <!-- Google Maps Route (shows live distance & time) -->
+        <iframe 
+          src="https://www.google.com/maps/dir/Bathili/Kotturu/Hiramandalam/">
+        </iframe>
+    </div>
+
+    <div class="buttons">
+        <button class="book" onclick="alert(msg)">
+            Book Ride
+        </button>
+
+        <!-- Call Driver -->
+        <button class="call" onclick="window.location.href='tel:9876543210'">
+            Call Driver
+        </button>
+    </div>
+
+</div>
+
+<script>
+let telugu = false;
+
+function toggleLang() {
+    telugu = !telugu;
+
+    if (telugu) {
+        document.getElementById("start").innerHTML = "📍 <b>ప్రారంభం:</b> బాతిలి";
+        document.getElementById("stop").innerHTML = "➡️ <b>మధ్య నిలుపు:</b> కొట్టూరు";
+        document.getElementById("end").innerHTML = "🏁 <b>గమ్యం:</b> హెరమండలం";
+        document.querySelector(".lang-btn").innerText = "English";
+        document.querySelector(".book").innerText = "రైడ్ బుక్ చేయండి";
+        document.querySelector(".call").innerText = "డ్రైవర్‌కు కాల్ చేయండి";
+        msg = "Rapidio రైడ్ బుక్ అయ్యింది!";
+    } else {
+        document.getElementById("start").innerHTML = "📍 <b>Start:</b> Bathili";
+        document.getElementById("stop").innerHTML = "➡️ <b>Stop:</b> Kotturu";
+        document.getElementById("end").innerHTML = "🏁 <b>Destination:</b> Hiramandalam";
+        document.querySelector(".lang-btn").innerText = "తెలుగు";
+        document.querySelector(".book").innerText = "Book Ride";
+        document.querySelector(".call").innerText = "Call Driver";
+        msg = "Rapidio Ride Booked Successfully!";
+    }
+}
+
+let msg = "Rapidio Ride Booked Successfully!";
+</script>
+
+</body>
+</html>
